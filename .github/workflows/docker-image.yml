@@ -7,12 +7,27 @@ on:
     branches: [ "main" ]
 
 jobs:
-
   build:
-
     runs-on: ubuntu-latest
 
     steps:
     - uses: actions/checkout@v4
+
+    - name: Set up Docker Buildx
+      uses: docker/setup-buildx-action@v2
+
     - name: Build the Docker image
       run: docker build . --file Dockerfile --tag my-image-name:$(date +%s)
+
+    - name: Run the Docker container
+      run: |
+        docker run -d -p 9002:9002 --name my-running-container my-image-name:$(date +%s)
+      
+    - name: Verify the container is running
+      run: |
+        docker ps
+
+    - name: Stop and remove the container
+      run: |
+        docker stop my-running-container
+        docker rm my-running-container
