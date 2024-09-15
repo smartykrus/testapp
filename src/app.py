@@ -15,9 +15,7 @@ def get_ip_address():
     try:
         # Create a socket connection to determine the local IP address
         s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
-        # Connect to an external address (e.g., Google's DNS server)
         s.connect(("8.8.8.8", 80))
-        # Retrieve the local IP address
         ip_address = s.getsockname()[0]
         s.close()
         return ip_address
