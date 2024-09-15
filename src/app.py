@@ -1,7 +1,6 @@
-
 from flask import Flask
 import socket
-from test.demo import * 
+from .test.demo import *
 
 app = Flask(__name__)
  
@@ -26,7 +25,4 @@ def get_ip_address():
     except Exception as e:
         return f"Error: {e}"
  
-if __name__ == '__main__':
-    # Run the Flask app on all available network interfaces on port 5960
-    app.run(host='0.0.0.0', port=9002)
-    
+
