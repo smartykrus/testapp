@@ -34,4 +34,4 @@ EXPOSE 9002
 
 
 # Start SSH and Flask in the background
-CMD ["/bin/sh", "-c", "/usr/sbin/sshd && python /app/app.py"]
+CMD ["/bin/sh", "-c", "/usr/sbin/sshd && python src/app.py"]
